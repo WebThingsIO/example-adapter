@@ -1,10 +1,11 @@
 {
-  "name": "moziot-adapter-example",
+  "name": "example-adapter",
   "version": "0.2.1",
   "description": "Example adapter plugin for Mozilla IoT Gateway",
   "main": "index.js",
   "keywords": [
-    "moziot",
+    "mozilla",
+    "iot",
     "adapter",
     "example"
   ],
