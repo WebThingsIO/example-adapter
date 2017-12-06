@@ -1,6 +1,6 @@
 {
   "name": "example-adapter",
-  "version": "0.2.1",
+  "version": "0.3.0-pre2",
   "description": "Example adapter plugin for Mozilla IoT Gateway",
   "main": "index.js",
   "keywords": [
