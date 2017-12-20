@@ -1,6 +1,6 @@
 {
   "name": "example-adapter",
-  "version": "0.3.0-pre2",
+  "version": "0.3.0-pre3",
   "description": "Example adapter plugin for Mozilla IoT Gateway",
   "main": "index.js",
   "keywords": [
@@ -18,6 +18,12 @@
   "bugs": {
     "url": "https://github.com/mozilla-iot/gateway/issues"
   },
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "example-plugin-adapter.js",
+    "index.js"
+  ],
   "moziot": {
     "api": {
       "min": 1,
