@@ -9,14 +9,14 @@
     "adapter",
     "example"
   ],
-  "homepage": "https://iot.mozilla.org/",
+  "homepage": "https://github.com/mozilla-iot/example-adapter",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozilla-iot/gateway.git"
+    "url": "https://github.com/mozilla-iot/example-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/mozilla-iot/gateway/issues"
+    "url": "https://github.com/mozilla-iot/example-adapter/issues"
   },
   "files": [
     "LICENSE",
