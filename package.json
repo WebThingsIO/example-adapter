@@ -1,7 +1,8 @@
 {
   "name": "example-adapter",
-  "version": "0.3.1",
-  "description": "Example adapter plugin for Mozilla IoT Gateway",
+  "version": "0.3.2",
+  "description": "Example adapter add-on for Mozilla IoT Gateway",
+  "author": "Mozilla IoT",
   "main": "index.js",
   "keywords": [
     "mozilla",
@@ -21,7 +22,7 @@
   "files": [
     "LICENSE",
     "SHA256SUMS",
-    "example-plugin-adapter.js",
+    "example-adapter.js",
     "index.js"
   ],
   "moziot": {
