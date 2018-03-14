@@ -1,5 +1,5 @@
 /**
- * example-plugin-adapter.js - Example adapter implemented as a plugin.
+ * example-adapter.js - Example adapter.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -34,7 +34,9 @@ class ExampleProperty extends Property {
   }
 
   /**
-   * @method setValue
+   * Set the value of the property.
+   *
+   * @param {*} value The new value to set
    * @returns a promise which resolves to the updated value.
    *
    * @note it is possible that the updated value doesn't match
@@ -58,36 +60,28 @@ class ExampleDevice extends Device {
     this.name = deviceDescription.name;
     this.type = deviceDescription.type;
     this.description = deviceDescription.description;
-    for (var propertyName in deviceDescription.properties) {
-      var propertyDescription = deviceDescription.properties[propertyName];
-      var property = new ExampleProperty(this, propertyName,
-                                         propertyDescription);
+    for (const propertyName in deviceDescription.properties) {
+      const propertyDescription = deviceDescription.properties[propertyName];
+      const property = new ExampleProperty(this, propertyName,
+                                           propertyDescription);
       this.properties.set(propertyName, property);
     }
   }
 }
 
-class ExamplePluginAdapter extends Adapter {
+class ExampleAdapter extends Adapter {
   constructor(addonManager, packageName) {
-    super(addonManager, 'ExamplePlugin', packageName);
+    super(addonManager, 'ExampleAdapter', packageName);
     addonManager.addAdapter(this);
   }
 
   /**
-   * For cleanup between tests.
-   */
-  clearState() {
-    this.actions = {};
-
-    for (let deviceId in this.devices) {
-      this.removeDevice(deviceId);
-    }
-  }
-
-  /**
-   * Add a ExampleDevice to the ExamplePluginAdapter
+   * Example process to add a new device to the adapter.
+   *
+   * The important part is to call: `this.handleDeviceAdded(device)`
    *
    * @param {String} deviceId ID of the device to add.
+   * @param {String} deviceDescription Description of the device to add.
    * @return {Promise} which resolves to the device added.
    */
   addDevice(deviceId, deviceDescription) {
@@ -95,7 +89,7 @@ class ExamplePluginAdapter extends Adapter {
       if (deviceId in this.devices) {
         reject('Device: ' + deviceId + ' already exists.');
       } else {
-        var device = new ExampleDevice(this, deviceId, deviceDescription);
+        const device = new ExampleDevice(this, deviceId, deviceDescription);
         this.handleDeviceAdded(device);
         resolve(device);
       }
@@ -103,14 +97,16 @@ class ExamplePluginAdapter extends Adapter {
   }
 
   /**
-   * Remove a ExampleDevice from the ExamplePluginAdapter.
+   * Example process ro remove a device from the adapter.
+   *
+   * The important part is to call: `this.handleDeviceRemoved(device)`
    *
    * @param {String} deviceId ID of the device to remove.
    * @return {Promise} which resolves to the device removed.
    */
   removeDevice(deviceId) {
     return new Promise((resolve, reject) => {
-      var device = this.devices[deviceId];
+      const device = this.devices[deviceId];
       if (device) {
         this.handleDeviceRemoved(device);
         resolve(device);
@@ -120,65 +116,58 @@ class ExamplePluginAdapter extends Adapter {
     });
   }
 
-  pairDevice(deviceId, deviceDescription) {
-    this.pairDeviceId = deviceId;
-    this.pairDeviceDescription = deviceDescription;
-  }
-
-  unpairDevice(deviceId) {
-    this.unpairDeviceId = deviceId;
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  startPairing(timeoutSeconds) {
-    console.log('ExamplePluginAdapter:', this.name,
+  /**
+   * Start the pairing/discovery process.
+   *
+   * @param {Number} timeoutSeconds Number of seconds to run before timeout
+   */
+  startPairing(_timeoutSeconds) {
+    console.log('ExampleAdapter:', this.name,
                 'id', this.id, 'pairing started');
-    if (this.pairDeviceId) {
-      var deviceId = this.pairDeviceId;
-      var deviceDescription = this.pairDeviceDescription;
-      this.pairDeviceId = null;
-      this.pairDeviceDescription = null;
-      this.addDevice(deviceId, deviceDescription).then(() => {
-        console.log('ExamplePluginAdapter: device:', deviceId, 'was paired.');
-      }).catch((err) => {
-        console.error('ExamplePluginAdapter: unpairing', deviceId, 'failed');
-        console.error(err);
-      });
-    }
   }
 
+  /**
+   * Cancel the pairing/discovery process.
+   */
   cancelPairing() {
-    console.log('ExamplePluginAdapter:', this.name, 'id', this.id,
+    console.log('ExampleAdapter:', this.name, 'id', this.id,
                 'pairing cancelled');
   }
 
+  /**
+   * Unpair the provided the device from the adapter.
+   *
+   * @param {Object} device Device to unpair with
+   */
   removeThing(device) {
-    console.log('ExamplePluginAdapter:', this.name, 'id', this.id,
+    console.log('ExampleAdapter:', this.name, 'id', this.id,
                 'removeThing(', device.id, ') started');
-    if (this.unpairDeviceId) {
-      var deviceId = this.unpairDeviceId;
-      this.unpairDeviceId = null;
-      this.removeDevice(deviceId).then(() => {
-        console.log('ExamplePluginAdapter: device:', deviceId, 'was unpaired.');
-      }).catch((err) => {
-        console.error('ExamplePluginAdapter: unpairing', deviceId, 'failed');
-        console.error(err);
-      });
-    }
+
+    this.removeDevice(device.id).then(() => {
+      console.log('ExampleAdapter: device:', device.id, 'was unpaired.');
+    }).catch((err) => {
+      console.error('ExampleAdapter: unpairing', device.id, 'failed');
+      console.error(err);
+    });
   }
 
+  /**
+   * Cancel unpairing process.
+   *
+   * @param {Object} device Device that is currently being paired
+   */
   cancelRemoveThing(device) {
-    console.log('ExamplePluginAdapter:', this.name, 'id', this.id,
+    console.log('ExampleAdapter:', this.name, 'id', this.id,
                 'cancelRemoveThing(', device.id, ')');
   }
 }
 
-function loadExamplePluginAdapter(addonManager, manifest, _errorCallback) {
-  var adapter = new ExamplePluginAdapter(addonManager, manifest.name);
-  var device = new ExampleDevice(adapter, 'example-plug-2', {
+function loadExampleAdapter(addonManager, manifest, _errorCallback) {
+  const adapter = new ExampleAdapter(addonManager, manifest.name);
+  const device = new ExampleDevice(adapter, 'example-plug-2', {
     name: 'example-plug-2',
     type: 'onOffSwitch',
-    description: 'Example Plugin Device',
+    description: 'Example Device',
     properties: {
       on: {
         name: 'on',
@@ -190,4 +179,4 @@ function loadExamplePluginAdapter(addonManager, manifest, _errorCallback) {
   adapter.handleDeviceAdded(device);
 }
 
-module.exports = loadExamplePluginAdapter;
+module.exports = loadExampleAdapter;
