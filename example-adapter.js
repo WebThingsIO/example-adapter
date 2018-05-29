@@ -87,7 +87,7 @@ class ExampleAdapter extends Adapter {
   addDevice(deviceId, deviceDescription) {
     return new Promise((resolve, reject) => {
       if (deviceId in this.devices) {
-        reject('Device: ' + deviceId + ' already exists.');
+        reject(`Device: ${deviceId} already exists.`);
       } else {
         const device = new ExampleDevice(this, deviceId, deviceDescription);
         this.handleDeviceAdded(device);
@@ -111,7 +111,7 @@ class ExampleAdapter extends Adapter {
         this.handleDeviceRemoved(device);
         resolve(device);
       } else {
-        reject('Device: ' + deviceId + ' not found.');
+        reject(`Device: ${deviceId} not found.`);
       }
     });
   }
