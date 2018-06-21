@@ -1,6 +1,7 @@
 {
   "name": "example-adapter",
-  "version": "0.3.2",
+  "display_name": "Example",
+  "version": "0.3.3",
   "description": "Example adapter add-on for Mozilla IoT Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
