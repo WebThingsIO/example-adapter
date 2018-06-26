@@ -27,8 +27,6 @@ try {
 class ExampleProperty extends Property {
   constructor(device, name, propertyDescription) {
     super(device, name, propertyDescription);
-    this.unit = propertyDescription.unit;
-    this.description = propertyDescription.description;
     this.setCachedValue(propertyDescription.value);
     this.device.notifyPropertyChanged(this);
   }
@@ -59,6 +57,7 @@ class ExampleDevice extends Device {
     super(adapter, id);
     this.name = deviceDescription.name;
     this.type = deviceDescription.type;
+    this['@type'] = deviceDescription['@type'];
     this.description = deviceDescription.description;
     for (const propertyName in deviceDescription.properties) {
       const propertyDescription = deviceDescription.properties[propertyName];
@@ -166,10 +165,13 @@ function loadExampleAdapter(addonManager, manifest, _errorCallback) {
   const adapter = new ExampleAdapter(addonManager, manifest.name);
   const device = new ExampleDevice(adapter, 'example-plug-2', {
     name: 'example-plug-2',
+    '@type': ['OnOffSwitch'],
     type: 'onOffSwitch',
     description: 'Example Device',
     properties: {
       on: {
+        '@type': 'OnOffProperty',
+        label: 'On/Off',
         name: 'on',
         type: 'boolean',
         value: false,
