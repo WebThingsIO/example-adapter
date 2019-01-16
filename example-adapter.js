@@ -8,21 +8,11 @@
 
 'use strict';
 
-let Adapter, Device, Property;
-try {
-  Adapter = require('../adapter');
-  Device = require('../device');
-  Property = require('../property');
-} catch (e) {
-  if (e.code !== 'MODULE_NOT_FOUND') {
-    throw e;
-  }
-
-  const gwa = require('gateway-addon');
-  Adapter = gwa.Adapter;
-  Device = gwa.Device;
-  Property = gwa.Property;
-}
+const {
+  Adapter,
+  Device,
+  Property,
+} = require('gateway-addon');
 
 class ExampleProperty extends Property {
   constructor(device, name, propertyDescription) {

@@ -1,10 +1,13 @@
 {
   "name": "example-adapter",
   "display_name": "Example",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Example adapter add-on for Mozilla IoT Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
   "keywords": [
     "mozilla",
     "iot",
@@ -21,7 +24,7 @@
     "url": "https://github.com/mozilla-iot/example-adapter/issues"
   },
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "eslint": "^5.12.0"
   },
   "files": [
     "LICENSE",
@@ -31,7 +34,7 @@
   ],
   "moziot": {
     "api": {
-      "min": 1,
+      "min": 2,
       "max": 2
     },
     "plugin": true,
