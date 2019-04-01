@@ -2,7 +2,7 @@
   "name": "example-adapter",
   "display_name": "Example",
   "version": "0.5.0",
-  "description": "Example adapter add-on for Mozilla IoT Gateway",
+  "description": "Example adapter add-on for Mozilla WebThings Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
   "scripts": {
