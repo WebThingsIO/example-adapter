@@ -62,6 +62,25 @@ class ExampleAdapter extends Adapter {
   constructor(addonManager, packageName) {
     super(addonManager, 'ExampleAdapter', packageName);
     addonManager.addAdapter(this);
+
+    if (!this.devices['example-plug']) {
+      const device = new ExampleDevice(this, 'example-plug', {
+        name: 'Example Plug',
+        '@type': ['OnOffSwitch', 'SmartPlug'],
+        description: 'Example Device',
+        properties: {
+          on: {
+            '@type': 'OnOffProperty',
+            label: 'On/Off',
+            name: 'on',
+            type: 'boolean',
+            value: false,
+          },
+        },
+      });
+
+      this.handleDeviceAdded(device);
+    }
   }
 
   /**
@@ -151,24 +170,4 @@ class ExampleAdapter extends Adapter {
   }
 }
 
-function loadExampleAdapter(addonManager, manifest, _errorCallback) {
-  const adapter = new ExampleAdapter(addonManager, manifest.name);
-  const device = new ExampleDevice(adapter, 'example-plug-2', {
-    name: 'example-plug-2',
-    '@type': ['OnOffSwitch'],
-    type: 'onOffSwitch',
-    description: 'Example Device',
-    properties: {
-      on: {
-        '@type': 'OnOffProperty',
-        label: 'On/Off',
-        name: 'on',
-        type: 'boolean',
-        value: false,
-      },
-    },
-  });
-  adapter.handleDeviceAdded(device);
-}
-
-module.exports = loadExampleAdapter;
+module.exports = ExampleAdapter;
