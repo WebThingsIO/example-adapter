@@ -15,5 +15,5 @@
   "manifest_version": 1,
   "name": "Example Adapter",
   "short_name": "Example",
-  "version": "0.5.2"
+  "version": "0.5.3"
 }
