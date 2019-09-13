@@ -1,7 +1,7 @@
 {
   "name": "example-adapter",
-  "display_name": "Example",
-  "version": "0.5.1",
+  "display_name": "Example Adapter",
+  "version": "0.5.2",
   "description": "Example adapter add-on for Mozilla WebThings Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
@@ -25,19 +25,21 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.2.2"
+    "eslint": "^6.3.0"
   },
   "files": [
     "LICENSE",
     "SHA256SUMS",
     "example-adapter.js",
-    "index.js"
+    "index.js",
+    "manifest.json"
   ],
   "moziot": {
     "api": {
       "min": 2,
       "max": 2
     },
+    "type": "adapter",
     "plugin": true,
     "exec": "{nodeLoader} {path}"
   }
