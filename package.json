@@ -1,7 +1,7 @@
 {
   "name": "example-adapter",
   "display_name": "Example Adapter",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Example adapter add-on for Mozilla WebThings Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
@@ -31,9 +31,13 @@
     "LICENSE",
     "README.md",
     "SHA256SUMS",
+    "css",
     "example-adapter.js",
+    "example-api-handler.js",
     "index.js",
-    "manifest.json"
+    "js",
+    "manifest.json",
+    "views"
   ],
   "moziot": {
     "api": {
