@@ -1,0 +1,23 @@
+#extension-example-adapter-view {
+  height: calc(100% - 7.6rem);
+  box-sizing: border-box;
+  overflow: auto;
+  position: relative;
+  top: 7.6rem;
+}
+
+#extension-example-adapter-content > h2 {
+  padding-top: 5rem;
+}
+
+#extension-example-adapter-content {
+  position: relative;
+  top: calc(50% - 7.6rem);;
+  transform: translateY(-50%);
+  max-height: 100%;
+  text-align: left;
+  font-size: 1.6rem;
+  color: #fff;
+  max-width: 60rem;
+  margin: 0 auto;
+}

@@ -14,6 +14,14 @@ const {
   Property,
 } = require('gateway-addon');
 
+let ExampleAPIHandler = null;
+try {
+  ExampleAPIHandler = require('./example-api-handler');
+} catch (e) {
+  console.log(`API Handler unavailable: ${e}`);
+  // pass
+}
+
 class ExampleProperty extends Property {
   constructor(device, name, propertyDescription) {
     super(device, name, propertyDescription);
@@ -55,6 +63,15 @@ class ExampleDevice extends Device {
                                            propertyDescription);
       this.properties.set(propertyName, property);
     }
+
+    if (ExampleAPIHandler) {
+      this.links.push({
+        rel: 'alternate',
+        mediaType: 'text/html',
+        // eslint-disable-next-line max-len
+        href: `/extensions/example-adapter?thingId=${encodeURIComponent(this.id)}`,
+      });
+    }
   }
 }
 
@@ -80,6 +97,10 @@ class ExampleAdapter extends Adapter {
       });
 
       this.handleDeviceAdded(device);
+    }
+
+    if (ExampleAPIHandler) {
+      this.apiHandler = new ExampleAPIHandler(addonManager, this);
     }
   }
 

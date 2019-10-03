@@ -1,5 +1,15 @@
 {
   "author": "Mozilla IoT",
+  "content_scripts": [
+    {
+      "css": [
+        "css/extension.css"
+      ],
+      "js": [
+        "js/extension.js"
+      ]
+    }
+  ],
   "description": "Example adapter add-on for Mozilla WebThings Gateway",
   "gateway_specific_settings": {
     "webthings": {
@@ -15,5 +25,10 @@
   "manifest_version": 1,
   "name": "Example Adapter",
   "short_name": "Example",
-  "version": "0.5.3"
+  "version": "0.6.0",
+  "web_accessible_resources": [
+    "css/*.css",
+    "js/*.js",
+    "views/*.html"
+  ]
 }
