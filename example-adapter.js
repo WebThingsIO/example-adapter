@@ -126,7 +126,7 @@ class ExampleAdapter extends Adapter {
   }
 
   /**
-   * Example process ro remove a device from the adapter.
+   * Example process to remove a device from the adapter.
    *
    * The important part is to call: `this.handleDeviceRemoved(device)`
    *
