@@ -9,7 +9,7 @@ shasum --algorithm 256 manifest.json package.json *.js LICENSE README.md > SHA25
 find css js views -type f -exec shasum --algorithm 256 {} \; >> SHA256SUMS
 
 # If you have npm production dependencies, uncomment the following line
-# find node_modules -type f -exec shasum --algorithm 256 {} \; >> SHA256SUMS
+# find node_modules \( -type f -o -type l \) -exec shasum --algorithm 256 {} \; >> SHA256SUMS
 
 TARFILE=`npm pack`
 
@@ -20,5 +20,4 @@ TARFILE=`npm pack`
 
 shasum --algorithm 256 ${TARFILE} > ${TARFILE}.sha256sum
 
-rm SHA256SUMS
-rm -rf package
+rm -rf SHA256SUMS package
