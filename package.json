@@ -1,7 +1,7 @@
 {
   "name": "example-adapter",
   "display_name": "Example Adapter",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Example adapter add-on for Mozilla WebThings Gateway",
   "author": "Mozilla IoT",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "url": "https://github.com/mozilla-iot/example-adapter/issues"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0"
   },
   "files": [

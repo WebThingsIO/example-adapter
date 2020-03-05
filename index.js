@@ -10,6 +10,6 @@
 
 const ExampleAdapter = require('./example-adapter');
 
-module.exports = (addonManager, manifest) => {
-  new ExampleAdapter(addonManager, manifest);
+module.exports = (addonManager) => {
+  new ExampleAdapter(addonManager);
 };

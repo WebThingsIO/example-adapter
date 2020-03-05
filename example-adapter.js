@@ -22,6 +22,8 @@ try {
   // pass
 }
 
+const manifest = require('./manifest.json');
+
 class ExampleProperty extends Property {
   constructor(device, name, propertyDescription) {
     super(device, name, propertyDescription);
@@ -76,8 +78,8 @@ class ExampleDevice extends Device {
 }
 
 class ExampleAdapter extends Adapter {
-  constructor(addonManager, manifest) {
-    super(addonManager, 'ExampleAdapter', manifest.name);
+  constructor(addonManager) {
+    super(addonManager, 'ExampleAdapter', manifest.id);
     addonManager.addAdapter(this);
 
     if (!this.devices['example-plug']) {
