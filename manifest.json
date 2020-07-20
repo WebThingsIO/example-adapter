@@ -25,7 +25,7 @@
   "manifest_version": 1,
   "name": "Example Adapter",
   "short_name": "Example",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "web_accessible_resources": [
     "css/*.css",
     "js/*.js",
