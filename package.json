@@ -1,24 +1,24 @@
 {
   "name": "example-adapter",
-  "version": "0.6.3",
-  "description": "Example adapter add-on for Mozilla WebThings Gateway",
-  "author": "Mozilla IoT",
+  "version": "0.6.4",
+  "description": "Example adapter add-on for WebThings Gateway",
+  "author": "WebThingsIO",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ."
   },
-  "homepage": "https://github.com/mozilla-iot/example-adapter",
+  "homepage": "https://github.com/WebThingsIO/example-adapter",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozilla-iot/example-adapter.git"
+    "url": "https://github.com/WebThingsIO/example-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/mozilla-iot/example-adapter/issues"
+    "url": "https://github.com/WebThingsIO/example-adapter/issues"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.5.0"
+    "eslint": "^7.10.0"
   },
   "files": [
     "LICENSE",

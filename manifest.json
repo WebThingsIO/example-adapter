@@ -1,5 +1,5 @@
 {
-  "author": "Mozilla IoT",
+  "author": "WebThingsIO",
   "content_scripts": [
     {
       "css": [
@@ -10,7 +10,7 @@
       ]
     }
   ],
-  "description": "Example adapter add-on for Mozilla WebThings Gateway",
+  "description": "Example adapter add-on for WebThings Gateway",
   "gateway_specific_settings": {
     "webthings": {
       "exec": "{nodeLoader} {path}",
@@ -19,13 +19,13 @@
       "strict_min_version": "0.10.0"
     }
   },
-  "homepage_url": "https://github.com/mozilla-iot/example-adapter",
+  "homepage_url": "https://github.com/WebThingsIO/example-adapter",
   "id": "example-adapter",
   "license": "MPL-2.0",
   "manifest_version": 1,
   "name": "Example Adapter",
   "short_name": "Example",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "web_accessible_resources": [
     "css/*.css",
     "js/*.js",
