@@ -79,7 +79,7 @@ class ExampleDevice extends Device {
 
 class ExampleAdapter extends Adapter {
   constructor(addonManager) {
-    super(addonManager, 'ExampleAdapter', manifest.id);
+    super(addonManager, 'ExampleAdapter', manifest.name);
     addonManager.addAdapter(this);
 
     if (!this.devices['example-plug']) {
