@@ -3,7 +3,7 @@
   "id": "example-adapter",
   "name": "Example Adapter",
   "short_name": "Example",
-  "version": "0.6.4",
+  "version": "1.0.0",
   "description": "Example adapter add-on for WebThings Gateway",
   "homepage_url": "https://github.com/WebThingsIO/example-adapter",
   "license": "MPL-2.0",
