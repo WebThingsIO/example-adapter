@@ -1,4 +1,12 @@
 {
+  "manifest_version": 1,
+  "id": "example-adapter",
+  "name": "Example Adapter",
+  "short_name": "Example",
+  "version": "0.6.4",
+  "description": "Example adapter add-on for WebThings Gateway",
+  "homepage_url": "https://github.com/WebThingsIO/example-adapter",
+  "license": "MPL-2.0",
   "author": "WebThingsIO",
   "content_scripts": [
     {
@@ -10,25 +18,43 @@
       ]
     }
   ],
-  "description": "Example adapter add-on for WebThings Gateway",
+  "web_accessible_resources": [
+    "css/*.css",
+    "js/*.js",
+    "views/*.html"
+  ],
   "gateway_specific_settings": {
     "webthings": {
       "exec": "{nodeLoader} {path}",
       "primary_type": "adapter",
       "strict_max_version": "*",
-      "strict_min_version": "0.10.0"
+      "strict_min_version": "1.0.0"
     }
   },
-  "homepage_url": "https://github.com/WebThingsIO/example-adapter",
-  "id": "example-adapter",
-  "license": "MPL-2.0",
-  "manifest_version": 1,
-  "name": "Example Adapter",
-  "short_name": "Example",
-  "version": "0.6.4",
-  "web_accessible_resources": [
-    "css/*.css",
-    "js/*.js",
-    "views/*.html"
-  ]
+  "options": {
+    "default": {
+      "optionalSetting": "default value"
+    },
+    "schema": {
+      "type": "object",
+      "required": [
+        "requiredSetting"
+      ],
+      "properties": {
+        "requiredSetting": {
+          "type": "string",
+          "title": "A required setting"
+        },
+        "optionalSetting": {
+          "type": "string",
+          "title": "An optional setting"
+        },
+        "startCounter": {
+          "type": "number",
+          "title": "The number of starts",
+          "readOnly": "true"
+        }
+      }
+    }
+  }
 }

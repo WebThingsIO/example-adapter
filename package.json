@@ -3,9 +3,12 @@
   "version": "0.6.4",
   "description": "Example adapter add-on for WebThings Gateway",
   "author": "WebThingsIO",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint ."
+    "prettier": "npx prettier -w *.js 'src/**/*.ts'",
+    "lint": "eslint src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node generate-config-interfaces.js && tsc -p ."
   },
   "homepage": "https://github.com/WebThingsIO/example-adapter",
   "license": "MPL-2.0",
@@ -17,19 +20,24 @@
     "url": "https://github.com/WebThingsIO/example-adapter/issues"
   },
   "devDependencies": {
+    "@types/ws": "^7.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.10.0"
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "gateway-addon": "^1.0.0",
+    "json-schema-to-typescript": "^10.1.4",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   },
   "files": [
-    "LICENSE",
-    "README.md",
-    "SHA256SUMS",
+    "dist/example-adapter.js",
+    "dist/example-api-handler.js",
+    "dist/index.js",
     "css",
-    "example-adapter.js",
-    "example-api-handler.js",
-    "index.js",
     "js",
-    "manifest.json",
-    "views"
+    "views",
+    "manifest.json"
   ]
 }

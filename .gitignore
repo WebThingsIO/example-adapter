@@ -4,3 +4,5 @@
 *~
 /node_modules/
 SHA256SUMS
+src/config.d.ts
+dist
