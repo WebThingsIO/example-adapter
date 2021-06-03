@@ -46,14 +46,14 @@ class OnOffProperty extends Property<boolean> {
 class ExamplePlugDevice extends Device {
   constructor(adapter: Adapter, id: string) {
     super(adapter, id);
-    ((this as unknown) as { '@type': string[] })['@type'] = ['OnOffSwitch', 'SmartPlug'];
+    (this as unknown as { '@type': string[] })['@type'] = ['OnOffSwitch', 'SmartPlug'];
     this.setTitle('Example Plug');
     this.setDescription('Example Device');
 
     const onOffProperty = new OnOffProperty(this);
     this.addProperty(onOffProperty);
 
-    ((this as unknown) as { links: Link[] }).links.push({
+    (this as unknown as { links: Link[] }).links.push({
       rel: 'alternate',
       mediaType: 'text/html',
       // eslint-disable-next-line max-len
@@ -77,7 +77,7 @@ export class ExampleAdapter extends Adapter {
     const database = new Database(this.packageId, '');
     await database.open();
 
-    const config = ((await database.loadConfig()) as unknown) as Config;
+    const config = (await database.loadConfig()) as unknown as Config;
 
     const { requiredSetting, startCounter } = config;
 
